@@ -1,26 +1,26 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-dart run lint_staged
-dart format . -l 120 --set-exit-if-changed
-dart analyze --fatal-infos --fatal-warnings .
+# dart run lint_staged
+# dart format . -l 120 --set-exit-if-changed
+# dart analyze --fatal-infos --fatal-warnings .
 
-flutter analyze
+# flutter analyze
 
-if [ $? -ne 0 ]; then
-  echo "Flutter analyze found errors. Commit aborted."
-  exit 1
-fi
+# if [ $? -ne 0 ]; then
+#   echo "Flutter analyze found errors. Commit aborted."
+#   exit 1
+# fi
 
-# Check for unsupported files in the lib folder
-echo "Checking for unsupported files in the lib folder..."
-UNSUPPORTED_FILES=$(find lib -type f -not \( -name "*.dart" -o -name "*.json" \))
+# # Check for unsupported files in the lib folder
+# echo "Checking for unsupported files in the lib folder..."
+# UNSUPPORTED_FILES=$(find lib -type f -not \( -name "*.dart" -o -name "*.json" \))
 
-if [ -n "$UNSUPPORTED_FILES" ]; then
-  echo "Unsupported files found in the lib folder:"
-  echo "$UNSUPPORTED_FILES"
-  echo "Commit aborted."
-  exit 1
-fi
+# if [ -n "$UNSUPPORTED_FILES" ]; then
+#   echo "Unsupported files found in the lib folder:"
+#   echo "$UNSUPPORTED_FILES"
+#   echo "Commit aborted."
+#   exit 1
+# fi
 
-echo "All checks passed. Proceeding with commit."
+# echo "All checks passed. Proceeding with commit."

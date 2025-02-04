@@ -1,0 +1,24 @@
+name: Check Unsupported Files
+
+on: [push, pull_request]
+
+jobs:
+  check-unsupported-files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Check for unsupported files
+      run: |
+        echo "Checking for unsupported files in the lib folder..."
+        UNSUPPORTED_FILES=$(find lib -type f -not \( -name "*.dart" -o -name "*.json" \))
+        
+        if [ -n "$UNSUPPORTED_FILES" ]; then
+          echo "Unsupported files found in the lib folder:"
+          echo "$UNSUPPORTED_FILES"
+          exit 1
+        else
+          echo "No unsupported files found."
+        fi
