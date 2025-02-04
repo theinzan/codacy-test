@@ -1,4 +1,4 @@
-name: Check Unsupported Files
+name: Check Unsupported Files and Lint Scripts
 
 on: [push, pull_request]
 
@@ -9,6 +9,13 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Install ShellCheck
+      run: sudo apt-get install -y shellcheck
+
+    - name: Lint shell scripts
+      run: |
+        shellcheck .husky/pre-commit
 
     - name: Check for unsupported files
       run: |
