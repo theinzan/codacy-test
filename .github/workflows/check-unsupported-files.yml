@@ -15,7 +15,7 @@ jobs:
 
     - name: Lint shell scripts
       run: |
-        shellcheck .husky/pre-commit
+        shellcheck -x .husky/pre-commit
 
     - name: Check for unsupported files
       run: |

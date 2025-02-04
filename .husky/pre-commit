@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
 
 dart run lint_staged
 dart format . -l 120 --set-exit-if-changed
@@ -7,7 +6,7 @@ dart analyze --fatal-infos --fatal-warnings .
 
 flutter analyze
 
-if [ $? -ne 0 ]; then
+if ! flutter analyze; then
   echo "Flutter analyze found errors. Commit aborted."
   exit 1
 fi
