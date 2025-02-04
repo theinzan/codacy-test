@@ -7,7 +7,7 @@ dart analyze --fatal-infos --fatal-warnings .
 
 flutter analyze
 
-if [ $? -ne 0 ]; then
+if ! flutter analyze; then
   echo "Flutter analyze found errors. Commit aborted."
   exit 1
 fi
