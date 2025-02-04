@@ -14,13 +14,8 @@ class MainApp extends StatelessWidget {
         body: Center(
           child: Column(
             children: <Widget>[
-              Container(
-                const 
-                child: Text("Hello, greeting to all users."),
-              ),
-              Container(
-                child: Text("Hello, greeting to all users."),
-              ),
+              Text("Hello, greeting to all users."),
+              Text("Hello, greeting to all users."),
             ],
           ),
         ),
