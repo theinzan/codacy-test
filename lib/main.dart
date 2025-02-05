@@ -13,7 +13,9 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         body: Center(
           child: Column(
-            children: <Widget>[Text("Hello, greeting to all users."), Text("Hello, Test again"), Text("hi")],
+            children: <Widget>[Text("Hello, greeting to all users."), Text("Hello, Test again"), 
+            
+ Text("hi")],
           ),
         ),
       ),
