@@ -17,6 +17,25 @@ jobs:
       run: |
         shellcheck -x .husky/pre-commit
 
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.26.0'
+
+    - name: Display Flutter version
+      run: flutter --version
+
+    - name: Validate Flutter version
+      run: |
+        EXPECTED_VERSION="3.26.0"
+        INSTALLED_VERSION=$(flutter --version | grep 'Flutter' | awk '{print $2}')
+        if [ "$INSTALLED_VERSION" != "$EXPECTED_VERSION" ]; then
+          echo "Installed Flutter version ($INSTALLED_VERSION) does not match expected version ($EXPECTED_VERSION)"
+          exit 1
+        else
+          echo "Flutter version is valid: $INSTALLED_VERSION"
+        fi
+
     - name: Check for unsupported files
       run: |
         echo "Checking for unsupported files in the lib folder..."
